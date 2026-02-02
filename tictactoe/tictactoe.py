@@ -126,6 +126,8 @@ def minimax(board):
             action_result = result(board, action)
             if terminal(action_result):
                 current_score = utility(action_result)
+                if current_score < score:
+                    return None
             else:
                 next_action = minimax(action_result)
                 new_board = result(action_result, next_action)
@@ -144,6 +146,8 @@ def minimax(board):
             action_result = result(board, action)
             if terminal(action_result):
                 current_score = utility(action_result)
+                if current_score > score:
+                    return None
             else:
                 next_action = minimax(action_result)
                 new_board = result(action_result, next_action)
